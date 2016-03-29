@@ -24,7 +24,7 @@ def get_most_liked_url(user_profile_url):
 	""" 2. Авторизуйте своё приложение """
 
 	session = vk.AuthSession(app_id=app_id, scope="offline,wall")
-	api = vk.API(self.session)
+	api = vk.API(session)
 
 	""" 3. Получите из ссылки пользователя его id или domain, необходимые, чтобы найти его
 			Документация по объекту пользователя поможет вам решить, что вам нужно (читайте: проще получить и использовать): id или domain.
