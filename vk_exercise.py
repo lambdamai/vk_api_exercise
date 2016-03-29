@@ -14,13 +14,12 @@ def get_most_liked_url(user_profile_url):
 	user = api.users.get(user_ids=user_id, fields='domain')[0]
 	user_domain = user['domain']
 	wall_posts = api.wall.get(domain=user_domain)[1:]
-	data = []
 
 	for i in range(len(wall_posts)):
-		data = [wall_posts[i]['date'], 'https://vk.com/wall%s_%s' % (wall_posts[i]['from_id'], wall_posts[i]['id']),
-					   wall_posts[i]['likes']['count'], wall_posts[i]['comments']['count'], wall_posts[i]['reposts']['count']]
+		data = [wall_posts[i]['date'], 'https://vk.com/wall%s_%s' % (wall_posts[i]['from_id'],
+			wall_posts[i]['id']), wall_posts[i]['likes']['count'], wall_posts[i]['comments']['count'],
+			wall_posts[i]['reposts']['count']]
 		write_to_db(data)
-		data = []
 
 	wall_posts.sort(key=lambda i: i['likes']['count'])
 	most_liked = wall_posts[-1]
@@ -48,3 +47,4 @@ if __name__ == '__main__':
 	print(get_most_liked_url(user_profile_url))
 
 	c.close()
+	
