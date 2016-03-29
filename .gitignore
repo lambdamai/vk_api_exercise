@@ -63,3 +63,5 @@ target/
 
 api.key
 data.spydata
+
+*.db
